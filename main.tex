@@ -1,0 +1,218 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc} 
+\usepackage[russian]{babel} 
+\usepackage{amsmath} 
+\usepackage{hyperref} 
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{wrapfig}
+\usepackage{bbm}
+\usepackage{parskip}
+\usepackage{gensymb}
+\usepackage{multicol}
+\usepackage{array}
+\usepackage{stackengine}
+\usepackage{mathtools}
+\usepackage[final]{pdfpages}
+\parindent 0pt
+\parskip 6pt
+\newcommand{\numberset}[1]{\mathbb{#1}} 
+\newcommand{\Aop}{\mathcal{A}}
+\newcommand{\Bop}{\mathcal{B}}
+\newcommand{\N}{\numberset{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Eps}{\mathcal{E}}
+\newcommand{\Zero}{\mathbb{O}}
+\newcommand{\Compl}{\mathbb{C}}
+\newcommand{\n}{\bigbreak}
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+\usepackage{color}
+\usepackage{hyperref}
+\def\letus{%
+    \mathord{\setbox0=\hbox{$\exists$}%
+             \hbox{\kern 0.125\wd0%
+                   \vbox to \ht0{%
+                      \hrule width 0.75\wd0%
+                      \vfill%
+                      \hrule width 0.75\wd0}%
+                   \vrule height \ht0%
+                   \kern 0.125\wd0}%
+           }%
+}
+\DeclarePairedDelimiter\evaluat{.}{\rvert}
+\reDeclarePairedDelimiterInnerWrapper\evaluat{nostar}{\mathopen{}#2\mathclose{#3}}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=blue,
+    linktoc=all
+}
+\title{ТеорВер, 3 семестр, теормин}
+\author{Ирина Ткаченко (:}
+\begin{document}
+\maketitle 
+\tableofcontents
+\newpage
+\section{Аксиомы Колмогорова, аксиомы непрерывности, их связь}
+\subsection{Аксиомы Колмогорова}
+$(\Omega,\,\Sigma)$ -- измеримое пространство. Введём функцию $P\::\:\Sigma\,\to\,\R$ такую, что
+\begin{enumerate}
+    \item \textit{\textbf{Аксиома I} (существование вероятности событий)}: $\forall\,A\in\Sigma\::\:P(A)\geq0$
+    \item \textit{\textbf{Аксиома II} (нормировка вероятности)}: $P(\Omega)=1$
+    \item \textit{\textbf{Аксиома III} (аддитивность вероятности)}: пусть $A$ --  счетный набор попарно дизъюнктных подмножеств, тогда $P(\sum\,A)=\sum\,P(A)$
+\end{enumerate}
+$p$ -- вероятностная мера, тройка $(\Omega,\Sigma,P)$ -- вероятностное пространство.
+\subsection{ Аксиомы непрерывности для системы множеств}
+\subsubsection{Первая аксиома}
+Пусть $(\Omega,\Sigma,P)$ -- вероятностное пространство. Выделено событие $B_1\supseteq B_2\supseteq \dots$ -- невозрастающая последовательность событий. $B_i\in\Sigma,\,\forall\,i=1,\dots,+\infty$
+\[
+B=\bigcup_{n=1}^{\infty} B_{n}=\lim_{n\to\infty}\,B_n,\:\:B\in\Sigma
+\] 
+$$ P(B)=P(\lim_{n\to\infty}\,B_n)=\lim_{n\to\infty}\,P(B_n) $$
+\subsection{Вторая аксиома}
+Пусть $(\Omega,\Sigma,P)$ -- вероятностное пространство. Выделено событие $A_1\subseteq A_2\subseteq \dots$ -- неубывающая последовательность событий. $A_i\in\Sigma,\,\forall\,i=1,\dots,+\infty$
+$$ A=\bigcup_{n=1}^{\infty} A_{n}=\lim_{n\to\infty}\,A_n,\:\:A\in\Sigma $$
+$$ P(A)=P(\lim_{n\to\infty}\,A_n)=\lim_{n\to\infty}\,P(A_n) $$
+\subsection{Связь аксиом}
+Аксиомы непрерывности эквивалентны.
+\newpage
+\section{Свойства вероятностной меры}
+\begin{enumerate}
+    \item $p(\varnothing)=0$
+    \item \textit{Аксиомы конечной аддитивности}  Для любого конечного набора попарно несовместных событий $A_1,\dots,A_n\in\Sigma,\,A_i\cap A_j=\varnothing\,\forall i\neq j$ имеет место равенство:
+    $$ P\Big(\sum^n_{i=1}A_i\Big)=P\Big(\bigcup^n_{i=1}A_i\Big)=\sum^n_{i=1}P(A_i) $$
+    \item Для любого события $A$ выполнено: $P(\overline{A})=1-P(A)$
+    \item Если $A\subseteq B$, то $P(B\setminus A)=P(B)-P(A)$
+    \item Для любого события $A$ выполнено $0\leq P(A)\leq 1$
+    \item Всегда $P(A\cap B)=P(A)+P(B)-P(A\cup B)$
+\end{enumerate}
+\newpage
+\section{Дискретные схемы: классическая схема, геометрическая схема, схема Бернулли, схема Пуассона. Определение, моменты}
+чет я уже устала(
+\subsection{Дискретные схемы}
+\textbf{Дискретная схема} -- частный случай общей. $\Omega$ -- не более чем счётно, $\Sigma$ -- $\sigma$-алгебра всех подмножеств $\Omega$.
+\begin{enumerate}
+    \item Для события $A$ верно: $$ \sum_{\omega\in\Omega}p(\omega)\geq 0 $$
+    \item Верно: $$ p(\Omega)=\sum_{\omega\in\Omega}p(\omega)=1 $$
+    \item Если $A_1,\dots,A_n$ -- дизъюнктный набор подмножеств, то что-то непонятное
+\end{enumerate}
+\subsubsection{Классическая схема}
+Пусть $|\Omega|=n$ и $\,\omega_1,\dots,\omega_n$ -- равновозможные, т.е. $p(\omega_i)=\cfrac{1}{n},\,p(A)=\cfrac{|A|}{|\Omega|}.$ 
+
+$p(\Omega)=1$ -- всё верно.
+\subsubsection{Геометрическая схема}
+Параметр схемы $p\in(0;\,1)$. Пусть $A$ -- событие, $p=p(A)\in(0;\,1)$ и $A$ -- результат опыта с двумя исходами. Проводятся независимые испытания до первого поялвения $A$. $\Omega=\{\omega_1,\dots,\omega_n,\dots\}$, где $\omega_k=\overline{AA\dots}A$, то есть $A$ выпало на $k$-ом ходе. $p(\omega_k)=(1-p)^{k-1}p=q^{k-1}p$. Тогда $\sum p(\omega_k)=1$, как и должно быть.
+\subsubsection{Схема Пуассона}
+Параметр схемы $\lambda>0$. $\Omega=\{\omega_0,\dots,\omega_n,\dots\}$. Вероятностная мера (или вероятность?) $p(\omega_n)=\cfrac{\lambda^n}{n!}e^{-\lambda}$. Есть положительная определённость $$ \sum_{n=0}^{\infty}\cfrac{\lambda^n}{n!}e^{-\lambda}=e^{-\lambda}\sum_{n=0}^{\infty}\cfrac{\lambda^n}{n!}=e^{-\lambda}e^{\lambda}=1 $$
+
+\subsubsection{Схема Бернулли повторения опыта}
+Параметр схемы $n\geq0,\,p\in[0;\,1]$. $\Omega=\{\omega_1,\dots,\omega_n\},\,p(\omega)=p^{k(\omega)}q^{n-k(\omega)}$, где $k(\omega)$ -- число успехов в серии из $n$ испытаний. $\omega_n=B_{n,p}(m)=\sum\omega$ -- ровно $m$ успехов. $|B_{n,p}(m)|=C^n_m\cdot p(\omega_m)=C^n_m p^m q^{n-m}.$
+$$ \sum p(\omega_m)=\sum_{m=0}^n C^n_m p^m q^{n-m}=(p+q)^n=1 $$
+\subsection{Случайные величины, основные определения}
+\textbf{Случайной} называют \textbf{величину}, которая в результате испытания примет одно и только одно числовое значение, зависящее от случайных факторов и заранее непредсказуемое.
+
+\textbf{Математическое ожидание} $EX$ -- мера среднего значения случайной величины, равная $EX=\sum X(\omega)\cdot p(\omega)$.
+
+\textbf{Дисперсией} случайной величины называется математическое ожидание квадрата отклонения этой случайной величины от её математического ожидания $DX=E[[X-EX]^2]$ или $DX=E[X^2]-(EX)^2$.
+
+\textbf{Среднее квадратичное отклонение} равняется корню из дисперсии.
+
+\textbf{Ковариация} двух случайных величин равняется $cov(X,Y)=\cfrac{D[X+Y]-DX-DY}{2}$
+\subsection{Определение моментов}
+Дана сулчайная величина $X$, определённая на некотором вероятностном пространстве.
+\begin{enumerate}
+    \item $k$-м \textbf{начальным} моментом случайной величины $X$ при $k\in\N$ называется\quad величина $\nu_k=E[X^k]$, если математическое ожидание $E[*]$ определено.
+    \item $k$-м \textbf{центральным} моментом сл. в. $X$ называется величина $\mu_k=E[(X-EX)^k]$
+    \item $k$-м \textbf{абсолютным} моментом сл. в. $X$ называется величина $\nu_k=E[|X|^k]$
+    \item $k$-м \textbf{центральным абсолютным} моментом случайной величины $X$ называется величина $\mu_k=E[|X-EX|^k]$
+    \item $k$-м \textbf{факториальным} моментом $X$ называется величина $\mu_k=E[X(X-1)\dots (X-k+1)]$
+\end{enumerate}
+\newpage
+\section{Функции распределения, плотности, моменты нормального, показательного, равномерного распределений}
+\subsection{Функция распределения}
+\subsubsection{Определение}
+\textbf{Функция распределения} — функция, характеризующая распределение случайной величины или случайного вектора; вероятность того, что случайная величина $X$ примет значение, меньшее или равное $x$.
+$$ F(t)=F_X(t)=P_X(X<t)=P_x((-\infty,\,t)) $$
+\subsubsection{Свойства}
+\begin{enumerate}
+    \item $F_X(t)$ не убывает.
+    \item $ \exists\,\lim\limits_{t\to\infty}F_X(t)=1 $ и $\exists\,\lim\limits_{t\to-\infty}F_X(t)=0$
+    \item $F_X(t)$ непрерывна слева.
+\end{enumerate}
+\subsection{Плотность распределения}
+\subsubsection{Определения}
+\textbf{Плотность распределения вероятностей} представляет собой производную функцию распределения: $f_X(x)=F_X'(x)$. $f_X(x)$ -- вероятность попадания случайной величины $X$ в отрезок $[x,\,x+\Delta x]$.
+
+$P_X=P_X(dx)$ \textbf{абсолютно непрерывна}, если $\exists\,f_X(x)\geq 0\:\forall\,A\in\Sigma\::\:P_X(A)=\int\limits_A f_X(x)dx$.
+
+\subsubsection{Свойства}
+Плотность распределения вероятностей:
+\begin{enumerate}
+    \item неотрицательна;
+    \item интегрируема;
+    \item нормирована: $\int\limits_{\R}f_X(x)dx=1$.
+\end{enumerate}
+\subsection{Виды распределений и их моменты}
+\subsubsection{Нормальное распределение}
+$$X \sim N(a,\,\sigma)$$
+$ f_X(x)=\cfrac{1}{\sigma\sqrt{2\pi}}\cdot e^{-\frac{(x-a)^2}{2\sigma^2}} $, где $a,\,\sigma\in\R$ -- параметры.
+
+$$F_X(x)=\cfrac{1}{\sigma\sqrt{2\pi}}\,\int_{-\infty}^x e^{-\frac{(x-a)^2}{2\sigma^2}}dt$$
+
+\textbf{Стандартным нормальным распределением} называется нормальное распределение с параметром $a=0$ и стандартным отклонением $\sigma=1$.
+
+\textbf{Математическое ожидание} $EX=a$, \textbf{дисперсия} $DX=\sigma^2$.
+
+\textbf{Моменты}.
+
+Если $X$ имеет нормальное распределение, то для неё существуют (конечные) моменты при всех $p$ с действительной частью больше $-1$. Для неотрицательных целых $p$, центральные моменты таковы:
+$$ E[X^p]=\begin{cases}0\quad\quad\quad p=2n+1,\\ \sigma^p(p-1)!!\quad\quad p=2n.\end{cases} $$
+
+Центральные абсолютные моменты для неотрицательных целых $p$ таковы:
+$$ E[|X|^p]=\sigma^p(p-1)!!\cdot\begin{cases}\sqrt{\frac{2}{\pi}} \quad\quad p=2n+1,\\1\quad\quad p=2n.\end{cases} $$
+\subsubsection{Показательное}
+$Exp_{\lambda},\,\lambda>0$
+
+$$f_X(x)=\begin{cases}\lambda e^{-\lambda x}\quad x>0,\\0\quad x\leq 0.\end{cases}$$
+
+$$F_X(x)=\begin{cases}1- e^{-\lambda x}\quad x>0,\\0\quad x\leq 0.\end{cases}$$
+
+Обладает Марковским свойством (при известном настоящем -- будущее не зависит от прошлого).
+
+\textbf{Математическое ожидание} $EX=\cfrac{1}{\lambda}$, \textbf{дисперсия} $DX=\cfrac{1}{\lambda^2}$, \textbf{моменты} $E[X^n]=\cfrac{n!}{\lambda^n}$.
+
+\subsubsection{Равномерное}
+$X\sim U(a,\,b)$
+$$ f_X(x)=\begin{cases}
+\cfrac{1}{b-a}\quad\quad x\in [a;\,b),\,b>a,\\
+0\quad\quad x\notin[a;\,b)
+\end{cases}$$
+$$ F_X(x)=\begin{cases}
+0 \quad\quad x\leq a,\\
+\cfrac{x-a}{b-a}\quad\quad a<x\leq b,\\
+1\quad\quad x\geq b
+\end{cases} $$
+\textbf{Математическое ожидание} $EX=\cfrac{a+b}{2}$, \textbf{дисперсия} $DX=\cfrac{(b-a)^2}{12}$, \textbf{моменты}:
+$$ E[X^n]=\cfrac{1}{n+1}\sum_{k=0}^n a^k b^{n-k}=\cfrac{b^{n+1}-a^{n+1}}{(b-a)(n+1)} $$
+\newpage
+\section{Независимость событий и случайных величин. Необходимые и достаточные условия независимости дискретных и непрерывных случайных величин}
+\subsection{Определения}
+События называются независимыми, если $P(A \cap B) = P(A) \cdot P(B)$.
+
+Cлучайные величины $X$ и $Y$ называются независимыми, если $\forall\,a,b\in\R$ события $(X\leq a)$
+и $(Y\leq b)$ независимы.
+$$ P((X\leq a)\cap(Y\leq b))=P(X\leq a)\cdot P(Y\leq b), $$
+то есть, распеределительный закон одной не зависит от распределительного закона другой.
+
+\subsection{Условия независимости}
+\subsubsection{Дискретный случай}
+Cлучайные величины $X$ и $Y$ независимы тогда и только тогда, когда имеет место $P_{ij}=P_{xi}\cdot P_{yj}$, где $P_{ij}$ -- вероятность случайного вектора $(X,Y)$, то есть $P_{ij}=P(\{\omega\::\:X(\omega)=xi\}\cap\{\omega\::\:Y(\omega)=yj\})$.
+\subsubsection{Просто так}
+Для того, чтобы случайные величины $X$ и $Y$ были независимы, необходимо и достаточно, чтобы функция распределения системы $(X,Y)$ была равна произведению функций распределения составляющи, то есть $F_{X,Y}(x,y)=F_X(x)\cdot F_Y(y)$.
+\subsubsection{Непрерывный случай}
+Для того, чтобы случайные величины $X$ и $Y$ Были независимы, необходимо и достаточно, чтобы плотность совместного распределения системы $(X,Y)$ была равна произведению плотностей распределения составляющих, то есть $f_{X,Y}(x,y)=f_X(x)\cdot f_Y(y)$.
+
+
+\end{document}
