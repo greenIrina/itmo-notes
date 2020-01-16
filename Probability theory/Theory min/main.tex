@@ -68,7 +68,7 @@ $P$ -- вероятностная мера, тройка $(\Omega,\Sigma,P)$ -- 
 \subsubsection{Первая аксиома}
 Пусть $(\Omega,\Sigma,P)$ -- вероятностное пространство. Выделено событие $B_1\supseteq B_2\supseteq \dots$ -- невозрастающая последовательность событий. $B_i\in\Sigma,\,\forall\,i=1,\dots,+\infty$
 \[
-B=\bigcup_{n=1}^{\infty} B_{n}=\lim_{n\to\infty}\,B_n,\:\:B\in\Sigma
+B=\bigcap_{n=1}^{\infty} B_{n}=\lim_{n\to\infty}\,B_n,\:\:B\in\Sigma
 \] 
 $$ P(B)=P(\lim_{n\to\infty}\,B_n)=\lim_{n\to\infty}\,P(B_n) $$
 \subsubsection{Вторая аксиома}
@@ -326,7 +326,7 @@ $$ y=f(\omega,x)+\nu=\sum_{j=1}^N \omega_j\cdot g_j(x)+\nu $$
 \subsection{Другое определение))}
 Пусть $L_x=\{ax+b\::\:a,b\in\R\}$ -- линейное пространство линейных функций от $x$. \textbf{Линейной регрессией} $Y$ на $X$ называется решение экстремальной задачи $$ inf_{g\in L_x} E[(Y-(ax+b))^2]=E[(Y-a^*x-b^*)^2] $$
 То есть найти функцию $g(x)=a^* x+b^*$.
-$$ a^*=\cfrac{cov(X,Y)}{DX} \quad\quad b^*=EY-a\cdot DX $$
+$$ a^*=\cfrac{cov(X,Y)}{DX} \quad\quad b^*=EY-a\cdot EX $$
 \newpage
 \section{Неравенство для моментов}
 \subsection{Неравенство Шварца (все моменты $E$)}
