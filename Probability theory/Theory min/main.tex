@@ -110,8 +110,8 @@ $p(\Omega)=1$ -- всё верно.
 Параметр схемы $\lambda>0$. $\Omega=\{\omega_0,\dots,\omega_n,\dots\}$. Вероятностная мера (или вероятность?) $p(\omega_n)=\cfrac{\lambda^n}{n!}e^{-\lambda}$. Есть положительная определённость $$ \sum_{n=0}^{\infty}\cfrac{\lambda^n}{n!}e^{-\lambda}=e^{-\lambda}\sum_{n=0}^{\infty}\cfrac{\lambda^n}{n!}=e^{-\lambda}e^{\lambda}=1 $$
 
 \subsubsection{Схема Бернулли повторения опыта}
-Параметр схемы $n\geq0,\,p\in[0;\,1]$. $\Omega=\{\omega_1,\dots,\omega_n\},\,p(\omega)=p^{k(\omega)}q^{n-k(\omega)}$, где $k(\omega)$ -- число успехов в серии из $n$ испытаний. $\omega_n=B_{n,p}(m)=\sum\omega$ -- ровно $m$ успехов. $|B_{n,p}(m)|=C^n_m\cdot p(\omega_m)=C^n_m p^m q^{n-m}.$
-$$ \sum p(\omega_m)=\sum_{m=0}^n C^n_m p^m q^{n-m}=(p+q)^n=1 $$
+Параметр схемы $n\geq0,\,p\in[0;\,1]$. $\Omega=\{\omega_1,\dots,\omega_n\},\,p(\omega)=p^{k(\omega)}q^{n-k(\omega)}$, где $k(\omega)$ -- число успехов в серии из $n$ испытаний. $\omega_n=B_{n,p}(m)=\sum\omega$ -- ровно $m$ успехов. $|B_{n,p}(m)|=C^m_n,\, p(\omega_m)=C^m_n p^m q^{n-m}.$
+$$ \sum p(\omega_m)=\sum_{m=0}^n C^m_n p^m q^{n-m}=(p+q)^n=1 $$
 \subsection{Случайные величины, основные определения}
 \textbf{Случайной} называют \textbf{величину}, которая в результате испытания примет одно и только одно числовое значение, зависящее от случайных факторов и заранее непредсказуемое.
 
@@ -224,7 +224,7 @@ Cлучайные величины $X$ и $Y$ независимы тогда и
 \begin{enumerate}
     \item $P(x\geq0)=1$
     \item$P(X>x)>0\:\forall\,x>0$
-    \item $P(X>x+y\,|\,x>y)=P(X>x)\:\forall\,x,y>0$
+    \item $P(X>x+y\,|\,X\geq y)=P(X>x)\:\forall\,x,y>0$
 \end{enumerate}
 Свойством отсутствия последствия обладает только показательное распределение.
 
