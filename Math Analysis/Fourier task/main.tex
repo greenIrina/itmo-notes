@@ -1,0 +1,107 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc} 
+\usepackage[russian]{babel} 
+\usepackage{amsmath} 
+\usepackage{hyperref} 
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{wrapfig}
+\usepackage{bbm}
+\usepackage{parskip}
+\usepackage{gensymb}
+\usepackage{multicol}
+\usepackage{array}
+\usepackage[final]{pdfpages}
+\parindent 0pt
+\parskip 6pt
+\newcommand{\numberset}[1]{\mathbb{#1}} 
+\newcommand{\Aop}{\mathcal{A}}
+\newcommand{\Bop}{\mathcal{B}}
+\newcommand{\N}{\numberset{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Eps}{\mathcal{E}}
+\newcommand{\Zero}{\mathbb{O}}
+\newcommand{\Compl}{\mathbb{C}}
+\newcommand{\n}{\bigbreak}
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+\usepackage{color}
+\usepackage{hyperref}
+\def\letus{%
+    \mathord{\setbox0=\hbox{$\exists$}%
+             \hbox{\kern 0.125\wd0%
+                   \vbox to \ht0{%
+                      \hrule width 0.75\wd0%
+                      \vfill%
+                      \hrule width 0.75\wd0}%
+                   \vrule height \ht0%
+                   \kern 0.125\wd0}%
+           }%
+}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=red,
+    linktoc=all
+}
+\title{Матан Фурье}
+
+\begin{document}
+\maketitle 
+Для функции $f (x)$, заданной на отрезке, построить три ряда Фурье: общий тригонометрический ряд, ряд Фурье по синусам и по косинусам. Для каждого полученного ряда построить (с помощью компьютера) графики нескольких частных сумм (например, $S_5,\,S_{10},\,S_{50}$) и график исходной функции. Убедиться (визуально), что частные суммы приближают исходную функцию. Знать, к чему сходятся построенные ряды Фурье в каждой точке.
+
+$$f(x)=\begin{cases} \cos x,\,x\in \Big[ 0,\,\cfrac{\pi}{2}\,\Big) \\ 0,\,x\in \Big[\cfrac{\pi}{2},\,2\pi\Big] \end{cases}
+$$
+\tableofcontents
+\newpage
+\section{Общий тригонометрический ряд Фурье}
+Наша функция задана на интервале $\Big[ 0,\,\cfrac{\pi}{2}\,\Big) \cup \Big[\cfrac{\pi}{2},\,2\pi\Big]$, это значит, что длина интервала $L = 2\pi$
+
+Теперь мы можем посчитать коэффициенты Фурье по формулам:
+
+$$ a_0 = \cfrac{1}{L}\cdot \int_{0}^{2\pi} f(x)dx = \cfrac{1}{L} \int_{0}^{\frac{\pi}{2}} \cos(x)dx=\cfrac{1}{2\pi}$$
+
+$$ a_n=\cfrac{2}{L}\int_0^{2\pi} f(x)\cdot\cos\Bigg(\cfrac{2n\pi x}{L}\Bigg)dx= \cfrac{2}{L}\int_0^{\frac{\pi}{2}}\cos(x)\cdot\cos(nx)dx = -\cfrac{\cos\Big(\cfrac{\pi n}{2}\Big)}{\pi (n^2-1)}$$
+
+$$ b_n=\cfrac{2}{L}\int_0^{2\pi} f(x)\cdot\sin\Bigg(\cfrac{2n\pi x}{L}\Bigg)dx= \cfrac{2}{L}\int_0^{\frac{\pi}{2}}\cos(x)\cdot\sin(nx)dx = \cfrac{n-\sin\Big(\cfrac{\pi n}{2}\Big)}{\pi (n^2-1)} $$
+
+Как мы видим, определенные интегралы при $n = 1$ содержат части, при которых происходит деление на ноль, поэтому найдем значения при $n\to1$:
+\begin{itemize}
+    \item $L_1=\cfrac{1}{4}\cos(x)-a_n$ при $n=1$
+    \item $L_2=\cfrac{1}{2\pi}\sin(x)-b_n$ при $n=1$
+\end{itemize}
+Итак, составим общий тригонометрический ряд Фурье по вычисленным коэффициентам по формуле:
+$$ a_0+\sum_{n=1}^{\infty}\Bigg(a_n\cdot\cos\Bigg(\cfrac{2n\pi x}{L}\Bigg) + b_n\cdot\sin\Bigg(\cfrac{2n\pi x}{L}\Bigg)\Bigg) = $$
+
+$$= \cfrac{1}{2\pi}+(L_1+L_2)+\Bigg(\sum_{n=2}^{\infty}(a_n\cdot\cos(nx)+b_n\cdot\sin(nx))\Bigg)  $$
+
+\href{https://www.desmos.com/calculator/59wiprilp0}{Рисуночек}
+
+\newpage
+\section{Построить ряд Фурье по косинусам}
+
+Посчитаем коэффициенты
+$$ a_0 = \cfrac{2}{L}\cdot \int_{0}^{2\pi} f(x)dx = \cfrac{2}{L} \int_{0}^{\frac{\pi}{2}} \cos(x)dx=\cfrac{1}{\pi}$$
+
+$$ a_n=\cfrac{2}{L}\int_0^{2\pi} f(x)\cdot\cos\Bigg(\cfrac{n\pi x}{L}\Bigg)dx= \cfrac{2}{L}\int_0^{\frac{\pi}{2}}\cos(x)\cdot\cos\Big(\cfrac{nx}{2}\Big)dx = -\cfrac{4\cos\Big(\cfrac{\pi n}{4}\Big)}{\pi (n^2-4)}$$
+
+Составим ряд
+
+$$ \cfrac{a_0}{2}+\sum_{n=1}^{\infty} a_n\cdot\cos\Bigg(\cfrac{n\pi x}{L}\Bigg) = \cfrac{1}{2\pi} + \sum_{n=1}^{\infty} a_n\cdot\cos\Big(\cfrac{nx}{2}\Big)$$
+
+\href{https://www.desmos.com/calculator/bh6zh4bwxo}{Рисуночек}
+
+\newpage
+\section{Построить ряд Фурье по синусам}
+Вычислим коэффициент
+$$ b_n=\cfrac{2}{L}\int_0^{2\pi} f(x)\cdot\sin\Bigg(\cfrac{n\pi x}{L}\Bigg)dx= \cfrac{2}{L}\int_0^{\frac{\pi}{2}}\cos(x)\cdot\sin\Big(\cfrac{nx}{2}\Big)dx = \cfrac{2\Big(n-2\sin\Big(\cfrac{\pi n}{4}\Big)\Big)}{\pi(n^2-4)}$$
+
+Составим ряд
+
+$$ \sum=\sum_{n=1}^{\infty} b_n\cdot\sin\Big(\cfrac{nx}{2}\Big)$$
+
+\href{https://www.desmos.com/calculator/anislzxvmj}{Рисуночек}
+
+\end{document}
